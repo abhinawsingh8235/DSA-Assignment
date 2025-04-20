@@ -1,0 +1,27 @@
+// 4. Check if an array can be split into two parts such that the sum of the prefix equals the sum of the suffix
+
+public class EqualPrefixSuffix {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 3};
+
+        int total = 0;
+        for (int num : arr) {
+            total += num;
+        }
+
+        int prefixSum = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            prefixSum += arr[i];
+            int suffixSum = total - prefixSum;
+            if (prefixSum == suffixSum) {
+                System.out.println("Can be split at index: " + i);
+                return;
+            }
+        }
+
+        System.out.println("Cannot be split into equal prefix and suffix sums.");
+    }
+}
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
