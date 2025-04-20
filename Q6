@@ -1,0 +1,27 @@
+// 6. Find the length of the longest substring without repeating characters
+
+import java.util.HashSet;
+
+public class LongestUniqueSubstring {
+    public static void main(String[] args) {
+        String s = "abcabcbb";
+        int n = s.length();
+        int maxLen = 0;
+        int left = 0;
+        HashSet<Character> set = new HashSet<>();
+
+        for (int right = 0; right < n; right++) {
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(s.charAt(right));
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        System.out.println("Length of longest substring without repeating characters: " + maxLen);
+    }
+}
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
